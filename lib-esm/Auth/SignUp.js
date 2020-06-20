@@ -232,6 +232,24 @@ var SignUp = /** @class */ (function (_super) {
             return _this.error(err);
         });
     };
+    
+    function defaultValueInput(handleInputChange, name, value){
+        if(value){
+            let event = {
+                target: {
+                    name,
+                    value
+                }
+            }
+            handleInputChange(event)
+            return {
+                value,
+                disabled: true
+            }
+        }
+        return {}
+    }   
+
     SignUp.prototype.showComponent = function (theme) {
         var _this = this;
         var hide = this.props.hide;
@@ -253,7 +271,7 @@ var SignUp = /** @class */ (function (_super) {
                             return f.key === field.key;
                         }) === 0
                             ? true
-                            : false, placeholder: I18n.get(field.placeholder), theme: theme, type: field.type, name: field.key, key: field.key, onChange: _this.handleInputChange, "data-test": auth.signUp.nonPhoneNumberInput }))) : (React.createElement(PhoneField, { theme: theme, required: field.required, defaultDialCode: _this.getDefaultDialCode(), label: field.label, placeholder: field.placeholder, onChangeText: _this.onPhoneNumberChanged, key: "phone_number" }));
+                            : false, placeholder: I18n.get(field.placeholder), theme: theme, type: field.type, name: field.key, key: field.key, onChange: _this.handleInputChange, ...defaultValueInput(_this.handleInputChange, field.key, field.value), "data-test": auth.signUp.nonPhoneNumberInput }))) : (React.createElement(PhoneField, { theme: theme, required: field.required, defaultDialCode: _this.getDefaultDialCode(), label: field.label, placeholder: field.placeholder, onChangeText: _this.onPhoneNumberChanged, key: "phone_number" }));
             })),
             React.createElement(SectionFooter, { theme: theme, "data-test": auth.signUp.footerSection },
                 React.createElement(SectionFooterPrimaryContent, { theme: theme },
