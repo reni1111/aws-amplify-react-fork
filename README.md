@@ -7,17 +7,23 @@ AWS Amplify is a JavaScript library for frontend and mobile developers building 
 =================
 
 Now you can add value to signUp inputs like:
+<code>
+
 <Authenticator
+
            signUpConfig={{
-             signUpFields: [
-               {
-                 label: 'Referral Id',
-                 key: 'custom:referralId',
-                 // required: true,
-                 placeholder: 'xxxx',
-                 displayOrder: 3,
-                 value: "24242"
-               },
-             ],
+           
+                      signUpFields: [
+                          {
+                            label: 'Referral Id',
+                             key: 'custom:referralId',
+                             // required: true,
+                             placeholder: 'xxxx',
+                             displayOrder: 3,
+                             value: "24242"
+                          },
+                      ],
+                      
            }}
-        >
+>
+</code>
